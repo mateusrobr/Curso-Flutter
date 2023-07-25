@@ -1,13 +1,9 @@
-mport 'dart:io';
+import 'dart:io';
 void main(){
   double num;
 
   num = double.parse(stdin.readLineSync()!);
   
-  if(num % 2 != 0){
-    print("impart");
-  }
-  else{
-    print("par");
-  }
+  
+  (num % 2 != 0) ? print("impar") : print("par");
 }

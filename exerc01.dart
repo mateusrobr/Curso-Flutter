@@ -31,6 +31,10 @@ class Aluno{
     }
     print("Redacao invalida");
   }
+  void updateNotas(double novaNota, String disciplina){
+    
+    _disciplinasNotasMap[disciplina] = novaNota;
+}
   void printAluno(){
     print("Nome: $_nome");
     print("Idade: $_idade");
@@ -41,6 +45,10 @@ class Aluno{
     _disciplinasNotasMap.forEach((disciplina,nota) => print("Disciplina: $disciplina e Nota: $nota"));
     print("Redacao: $redacaoFerias");
   }
+  
+  Map<dynamic,dynamic> get disciplinasNotas{
+    return this._disciplinasNotasMap;
+  }
 }
 void main() {
   Aluno aluno1 = Aluno("Luiz", 20, 60.00, {}, true);
@@ -49,5 +57,10 @@ void main() {
   aluno1.atribuirDisciplinaNota("Estudados Amazonicos", 1.0);
   aluno1.atribuirDisciplinaNota("Geografia", 5.0);
   aluno1.atribuirRedacao("Ferias a a a a a a a a a a a a a a a a a a a a a mais melhor");
+  aluno1.printAluno();
+  
+  for(String disciplina in aluno1.disciplinasNotas.keys){
+        aluno1.updateNotas(10, disciplina);
+    }
   aluno1.printAluno();
 }

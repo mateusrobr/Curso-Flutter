@@ -49,6 +49,10 @@ class Aluno{
   Map<dynamic,dynamic> get disciplinasNotas{
     return this._disciplinasNotasMap;
   }
+  
+  set peso(double newPeso){
+    _peso = newPeso;
+  }
 }
 void main() {
   Aluno aluno1 = Aluno("Luiz", 20, 60.00, {}, true);

@@ -4,10 +4,5 @@ void main(){
   print("Digite sua idade: ");
   idade = int.parse(stdin.readLineSync()!);
   
-  if(idade >= 18){
-    print("Voce é maior de idade!");
-  }
-  else{
-    print("Voce é menor de idade");
-  }
+  (idade >=18) ? print("Voce é maior de idadade") : print("Voce é menor de idade");
 }

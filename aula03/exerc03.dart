@@ -5,6 +5,7 @@ void main(){
 
   Map<dynamic,dynamic> productNamePriceMap = {};
   while(true){
+    print("Se deseja sair do loop digite algum caracter sem ser numero no preço");
     print("Qual o novo produto: ");
     String ? newProduct = stdin.readLineSync();
     print("Qual o preço de $newProduct:");

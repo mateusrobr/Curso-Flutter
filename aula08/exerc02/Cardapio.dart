@@ -125,25 +125,9 @@ class _CardapioState extends State<Cardapio> {
                                       MediaQuery.of(context).size.height * 0.15,
                                   child: Padding(
                                     padding: const EdgeInsets.all(3),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    TelaPratoEspecifico(
-                                                        nomePrato: "teste",
-                                                        modoPreparo: "teste")));
-                                      },
-                                      child: Container(
-                                        child: ReceitaText(receita: receita),
-                                        decoration: BoxDecoration(
-                                            gradient: LinearGradient(colors: [
-                                          Color(0xFF0061ff),
-                                          Color(0xFF60efff)
-                                        ])),
-                                        padding: const EdgeInsets.all(2),
-                                      ),
+                                    child: ContainerReceita(
+                                      receita: receita,
+                                      modoPreparo: mapDescricaoPratos[receita],
                                     ),
                                   ),
                                 ),
@@ -160,21 +144,32 @@ class _CardapioState extends State<Cardapio> {
   }
 }
 
-class ReceitaText extends StatelessWidget {
-  const ReceitaText({
-    super.key,
-    required this.receita,
-  });
+class ContainerReceita extends StatelessWidget {
+  const ContainerReceita(
+      {super.key, required this.receita, required this.modoPreparo});
 
   final String receita;
+  final String modoPreparo;
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      receita,
-      style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.bold),
+    return Container(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return TelaPratoEspecifico(
+                nomePrato: receita, modoPreparo: modoPreparo);
+          }));
+        },
+        child: Text(
+          receita,
+          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+      ),
+      decoration: BoxDecoration(
+          gradient:
+              LinearGradient(colors: [Color(0xFF0061ff), Color(0xFF60efff)])),
+      padding: const EdgeInsets.all(2),
     );
   }
 }
